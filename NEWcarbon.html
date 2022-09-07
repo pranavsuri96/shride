@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Carbon Emission Calculator</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    
+    <body>
+        <div class='container bg-info text-white rounded-lg text-center'>
+            <h1>Carbon Emmision Calculator</h1>
+            <h3>What is your MONTHLY electricity bill in USD?</h3>
+            <input id='ele' type='number' placeholder='Insert Amount'/>
+            <h3>What is your MONTHLY gas bill in USD?</h3>
+            <input id='gas' type='number' placeholder='Insert Amount'/>
+          <h3>What is your MONTHLY oil bill in USD?</h3>
+            <input id='oil' type='number' placeholder='Insert Amount'/>
+			 <h3>What is your YEARLY car mileage in MILES?</h3>
+            <input id='mileage' type='number' placeholder='Insert Mileage'/>
+			 <h3>The number of domestic flights you’ve taken in the past year?</h3>
+            <input id='dom' type='number' placeholder='Insert trip'/>
+			<h3>The number of International flights you’ve taken in the past year?</h3>
+            <input id='internation' type='number' placeholder='Insert trip'/>
+            <br/>
+            <br/>
+            <button class='btn-secondary rounded-sm' onclick='calcCO2()'>Calculate Carbon Footprint</button>
+          <br/>
+          <br/>
+        </div>
+        <br/>
+		    <div class='container text-center'>
+            <h2>Your Carbon Footprint is:</h2>
+            <h1 id='result' class='bg-success rounded-lg'></h1>
+            <h3>g CO2e per year</h3>
+			<h3>Keep in mind that an “ideal” carbon footprint (or a “low” footprint) is anywhere from 6,000 to 15,999 pounds per year. 16,000-22,000 is considered average. Under 6,000 is considered very low. Over 22,000? You may want to take some of these “living green” practices into consideration.</h3>
+
+        </div>
+        
+        <script>
+            var res = document.getElementById('result');
+            var ele = document.getElementById('ele');
+            var gas = document.getElementById('gas');
+            var oil = document.getElementById('oil');
+			var mileage = document.getElementById('mileage');
+            var dom = document.getElementById('dom');
+            var internation = document.getElementById('internation');
+            function calcCO2() {
+                var x = ele.value;
+                var y = gas.value;
+                var z = oil.value;
+				var a = mileage.value;
+				var b = dom.value;
+				var c = internation.value;
+				//var c1 = (x * 105);
+				//var c2 = (y * 105);
+				//var c3 = (z * 113);
+				//var c4 = (a * 0.8);
+                var calc = ((x * 105) + (y * 105) + (z * 113) + (a * 0.8) + (b*1100) + (c*4400) /10);
+				calc = calc.toFixed();
+				console.log('calc is: ' + calc);
+                res.innerHTML = calc;
+            }
+        </script>
+    </body>
+</html>
